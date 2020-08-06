@@ -88,19 +88,20 @@ est vidé de son contenu (lignes 32 & 33).
     hadoop 2
     to 1
   
-(11) Tester le fonctionnement de ce programme avec le fichier ulyss.txt.
+## (11) Tester le fonctionnement de ce programme avec le fichier ulyss.txt.
 
-2. Optimisation de WordCount.java . Reprendre le code source de l'exemple WordCount en considérant le nouveau schéma des entrées/sorties du processus Map/Reduce qui vise à limiter le nombre de couples (clé,valeur) échangés entre Map et Reduce.
+# 2. Optimisation de WordCount.java . Reprendre le code source de l'exemple WordCount en considérant le nouveau schéma des entrées/sorties du processus Map/Reduce qui vise à limiter le nombre de couples (clé,valeur) échangés entre Map et Reduce.
 
         <Hello World, Bye World!>            MAP1 {(Hello,1), (World,2), (Bye,1)} 
         <Hello hadoop, Goodbye to hadoop.>   MAP2 {(Hello,1),(hadoop,2),(Goodbye,1),(to,1)}  
         REDUCE  {(Hello,2), (World,2), (Bye,1), (hadoop,2), (Goodbye,1),(to,1)}
 
-(12) Implanter le schéma proposé en Java.
-(13) Montrer l’optimisation obtenue par l’implantation du nouveau schéma. Pour cela utiliser la trace d’exécution Hadoop commentée à l’étape (1.3.7).
+## (12) Implanter le schéma proposé en Java.
+
+## (13) Montrer l’optimisation obtenue par l’implantation du nouveau schéma. Pour cela utiliser la trace d’exécution Hadoop commentée à l’étape (1.3.7).
 Remarques : les instances de Mapper et Reducer sont créées au début del'exécution. L'appel à la méthode map quant à elle est exécutée pour chaque portion de données à traiter. Cette méthode peut donc être appelée plusieurs fois pour la même instance de la classe Mapper (idem pour Reducer).
 
-3. Vers un nouveau traitement Sur la base des traitements ci-dessus, nous souhaitons désormais obtenir le nombre de mots trouvés par première lettre (après la conversion de la casse en minuscule)
+# 3. Vers un nouveau traitement Sur la base des traitements ci-dessus, nous souhaitons désormais obtenir le nombre de mots trouvés par première lettre (après la conversion de la casse en minuscule)
 c'est-à-dire :
 
         b 1
@@ -109,6 +110,6 @@ c'est-à-dire :
         t 1
         w 2
 
-(1) Pour obtenir ce résultat, peut-on simplement modifier le comportement du Reducer ?
-(2) Proposer un traitement Map/Reduce adapté (algorithme Map et algorithme du Reduce).
-(3) Implanter en java ce nouveau traitement sur la base des fichiers java des questions précédentes
+- (1) Pour obtenir ce résultat, peut-on simplement modifier le comportement du Reducer ?
+- (2) Proposer un traitement Map/Reduce adapté (algorithme Map et algorithme du Reduce).
+- (3) Implanter en java ce nouveau traitement sur la base des fichiers java des questions précédentes
