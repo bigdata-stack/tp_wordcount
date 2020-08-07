@@ -4,25 +4,25 @@
 Les différentes manipulations de ce support (et ceux à venir) se feront via le
 NameNode et quel que soit la taille du cluster.
 
-# 1. Exemple de WordCount.java
-## 1.1. Connexion au cluster Hadoop
+1. Exemple de WordCount.java
+ 1.1. Connexion au cluster Hadoop
   (1) Se connecter sur le NameNode avec MobaXterm en créant une session de connexion SSH avec l'utilisateur hadoop.
   
-## 1.2. Chargement des fichiers dans le système HDFS (« HaDoop File System »)
+ 1.2. Chargement des fichiers dans le système HDFS (« HaDoop File System »)
   (2) Créer un répertoire dans HDFS via la commande suivante sur le prompt. 
   
     hadoop dfs –mkdir rficTPWC
     
-## (3) Vérifier la présence du répertoire dans HDFS.
+ (3) Vérifier la présence du répertoire dans HDFS.
 
   hadoop dfs –ls
   
-## (4) Placer les fichiers fournis fichier1.txt et fichier2.txt dans le répertoire que vous venez de créer sur HDFS. Attention bien faire la distinction entre le
+ (4) Placer les fichiers fournis fichier1.txt et fichier2.txt dans le répertoire que vous venez de créer sur HDFS. Attention bien faire la distinction entre le
 contenu de votre machine, de la machine virtuelle NameNode et du HDFS.
 
   hadoop dfs –put fichier*.txt rficTPWC
   
-## (5) Vérifier leur présence dans le répertoire via la commande ci-dessous ou l'interface web (http://192.168.56.50:50070).
+ (5) Vérifier leur présence dans le répertoire via la commande ci-dessous ou l'interface web (http://192.168.56.50:50070).
 
   hadoop dfs –ls rficTPWC/
   
@@ -88,20 +88,20 @@ est vidé de son contenu (lignes 32 & 33).
     hadoop 2
     to 1
   
-## (11) Tester le fonctionnement de ce programme avec le fichier ulyss.txt.
+ (11) Tester le fonctionnement de ce programme avec le fichier ulyss.txt.
 
-# 2. Optimisation de WordCount.java . Reprendre le code source de l'exemple WordCount en considérant le nouveau schéma des entrées/sorties du processus Map/Reduce qui vise à limiter le nombre de couples (clé,valeur) échangés entre Map et Reduce.
+2. Optimisation de WordCount.java . Reprendre le code source de l'exemple WordCount en considérant le nouveau schéma des entrées/sorties du processus Map/Reduce qui vise à limiter le nombre de couples (clé,valeur) échangés entre Map et Reduce.
 
         <Hello World, Bye World!>            MAP1 {(Hello,1), (World,2), (Bye,1)} 
         <Hello hadoop, Goodbye to hadoop.>   MAP2 {(Hello,1),(hadoop,2),(Goodbye,1),(to,1)}  
         REDUCE  {(Hello,2), (World,2), (Bye,1), (hadoop,2), (Goodbye,1),(to,1)}
 
-## (12) Implanter le schéma proposé en Java.
+ (12) Implanter le schéma proposé en Java.
 
-## (13) Montrer l’optimisation obtenue par l’implantation du nouveau schéma. Pour cela utiliser la trace d’exécution Hadoop commentée à l’étape (1.3.7).
+ (13) Montrer l’optimisation obtenue par l’implantation du nouveau schéma. Pour cela utiliser la trace d’exécution Hadoop commentée à l’étape (1.3.7).
 Remarques : les instances de Mapper et Reducer sont créées au début del'exécution. L'appel à la méthode map quant à elle est exécutée pour chaque portion de données à traiter. Cette méthode peut donc être appelée plusieurs fois pour la même instance de la classe Mapper (idem pour Reducer).
 
-# 3. Vers un nouveau traitement Sur la base des traitements ci-dessus, nous souhaitons désormais obtenir le nombre de mots trouvés par première lettre (après la conversion de la casse en minuscule)
+ 3. Vers un nouveau traitement Sur la base des traitements ci-dessus, nous souhaitons désormais obtenir le nombre de mots trouvés par première lettre (après la conversion de la casse en minuscule)
 c'est-à-dire :
 
         b 1
